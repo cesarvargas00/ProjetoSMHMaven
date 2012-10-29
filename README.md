@@ -7,6 +7,7 @@ Projeto de Sistemas Multimidia e Hipermídia.
 + Felipe Kitagawa 
 
 Projeto Java web com Maven + JPA + JSF criado para a disciplina de SMH - Sistemas Multimídia e Hipermídia.
+Qualquer dúvida, o Cesar é fodão...
 
 -
 _Copyright (c) 2012 Cesar Vargas, Felipe Kitagawa, Alisson Perez, Alan Vangelis_
