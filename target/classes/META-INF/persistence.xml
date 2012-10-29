@@ -5,7 +5,6 @@
     <persistence-unit name="bancoSMH" transaction-type="RESOURCE_LOCAL">
 
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.edu.mackenzie.projetoSMHMaven.model.Produto</class>
 
         <properties>
 
@@ -15,7 +14,7 @@
 
             <property
                 name="hibernate.hbm2ddl.auto"
-                value="update" />
+                value="create" />
 
             <property
                 name="hibernate.show_sql"
