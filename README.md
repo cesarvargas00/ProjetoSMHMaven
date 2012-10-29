@@ -12,4 +12,4 @@ Felipe Kitagawa
 
 Projeto Java web com Maven + JPA + JSF criado para a disciplina de SMH - Sistemas Multimídia e Hipermídia.
 
-
+<red>Pessoal, precisa do Eclipse Juno esse projeto. E também do Jboss Tools</red>
