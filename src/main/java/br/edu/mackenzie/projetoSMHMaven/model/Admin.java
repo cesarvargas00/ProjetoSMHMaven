@@ -21,5 +21,5 @@ public class Admin extends Usuario {
 	public void setPosts(Collection<Post> posts) {
 		this.posts = posts;
 	}
-
+	
 }

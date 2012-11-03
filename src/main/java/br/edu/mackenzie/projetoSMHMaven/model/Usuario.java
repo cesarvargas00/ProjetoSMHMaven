@@ -87,5 +87,5 @@ public class Usuario {
 	public void setComentarios(Collection<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
-
+	
 }
