@@ -1,2 +1,7 @@
 /* Estilos gerais */
-.logotipo { font-size: 50px; font-weight: bold; padding: 50px 0 ; color: #CD0000 ; } 
+.logotipo { color: #CD0000 ; }
+
+/* Estilos dos posts */
+.post { border-bottom: 1px solid #CCC; padding-top: 10px; }
+.post section { padding: 10px 0 ; }
+.post .info { font-size: 10px; color: #999 ; }
