@@ -1,15 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
-<h:head>
-	<title>MackBlog</title>
-</h:head>
-<h:body>
-Olá #{sessionScope.user}!
-Você está logado!
-	<h:form>
-	<h:commandLink value="Sair" action="#{loginBean.registraSaida}" />
-	</h:form>
-</h:body>
-
-</html>
+<ui:composition template="/WEB-INF/includes/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">>
+<ui:define name="conteudo">
+<div class="row">
+<div class="span8">
+Conteudo
+</div>
+<div class="span4">
+Barra lateral
+</div>
+</div>
+</ui:define>
+</ui:composition>
