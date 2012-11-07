@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import br.edu.mackenzie.projetoSMHMaven.exception.UserNotFoundException;
 import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
 
 public class UsuarioRepositorio extends Repositorio {
@@ -29,26 +30,26 @@ public class UsuarioRepositorio extends Repositorio {
 		return usuarios ;
 	}
 	
-	public Boolean login( String email , String passwordMd5 ) {
+	public Usuario login( String email , String passwordMd5 ) throws UserNotFoundException {
 		EntityManager manager = this.getManager() ;
+		Usuario usuario = null ;
 		
 		Query query = manager.createQuery( "SELECT u FROM Usuario u WHERE email = :email and password = :password" ) ;
 		query.setParameter( "password" , passwordMd5 ) ;
 		query.setParameter( "email" , email ) ;
 		
-		System.out.println("Email : " + email + " senha: " + passwordMd5 );
-		
 		try {
-			Usuario usuario = (Usuario) query.getSingleResult() ;			
-			if ( usuario != null ) {
-				return true ;
-			}
+			usuario = (Usuario) query.getSingleResult() ;			
 		}
 		catch ( NoResultException e ) {
 			
 		}
 		
-		return false ;
+		if ( usuario != null ) {
+			return usuario ;
+		}
+		
+		throw new UserNotFoundException() ;
 	}
 	
 }
