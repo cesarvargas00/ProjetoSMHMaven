@@ -1,10 +1,13 @@
 package br.edu.mackenzie.projetoSMHMaven.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Set;
+
 import javax.persistence.*;
 //TODO Como agente vai implementar o avatar ( profile picture )? Agente vai fazer um upload direto pro banco?
 //Como faz isso?
+
+import br.edu.mackenzie.projetoSMHMaven.util.Util;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -16,7 +19,7 @@ public class Usuario {
 	@Column(length = 50, nullable = false, unique = true)
 	private String email;
 
-	@Column(length = 30, nullable = false)
+	@Column(length = 32, nullable = false)
 	private String password;
 
 	@Column(length = 30, nullable = false)
@@ -27,8 +30,8 @@ public class Usuario {
 
 	private String avatar;
 
-	@OneToMany
-	private Collection<Comentario> comentarios = new ArrayList<Comentario>();
+	@OneToMany( mappedBy = "owner" )
+	private Set<Comentario> comentarios ;
 
 	// g&s
 
@@ -55,6 +58,10 @@ public class Usuario {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public void setPasswordMD5(String password) {
+		this.password = Util.MD5( password ) ;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -80,12 +87,20 @@ public class Usuario {
 		this.avatar = avatar;
 	}
 
-	public Collection<Comentario> getComentarios() {
+	public Set<Comentario> getComentarios() {
 		return comentarios;
 	}
 
-	public void setComentarios(Collection<Comentario> comentarios) {
+	public void setComentarios(Set<Comentario> comentarios) {
 		this.comentarios = comentarios;
+	}
+	
+	public boolean isAdmin() {
+		return false ;
+	}
+	
+	public String toString() {
+		return this.firstName + " - " + this.email ;
 	}
 	
 }

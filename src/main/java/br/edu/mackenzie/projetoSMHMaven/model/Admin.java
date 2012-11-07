@@ -1,24 +1,28 @@
 package br.edu.mackenzie.projetoSMHMaven.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
 public class Admin extends Usuario {
 
 	public Admin() {
-
+		super() ;
 	}
 
-	@OneToMany
-	private Collection<Post> posts = new ArrayList<Post>();
+	@OneToMany( mappedBy = "owner" )
+	private Set<Post> posts ;
 
-	public Collection<Post> getPosts() {
+	public Set<Post> getPosts() {
 		return posts;
 	}
+	
+	public boolean isAdmin() {
+		return true ;
+	}
 
-	public void setPosts(Collection<Post> posts) {
+	public void setPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
 	

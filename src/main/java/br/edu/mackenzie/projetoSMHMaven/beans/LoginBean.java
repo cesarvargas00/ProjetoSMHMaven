@@ -1,6 +1,5 @@
 package br.edu.mackenzie.projetoSMHMaven.beans;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.faces.application.FacesMessage;
@@ -9,37 +8,45 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import br.edu.mackenzie.projetoSMHMaven.exception.UserNotFoundException;
+import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
+import br.edu.mackenzie.projetoSMHMaven.repositorios.UsuarioRepositorio;
+import br.edu.mackenzie.projetoSMHMaven.util.SessaoUsuario;
+import br.edu.mackenzie.projetoSMHMaven.util.Util;
+
 @ManagedBean
 public class LoginBean {
-	private String login;
-	private String pass;
-	private static Map<String, String> mapa = new HashMap<String, String>();
-	static {
-		LoginBean.mapa.put("cesar.vargas", "senha");
-		LoginBean.mapa.put("alisson", "senha");
+	private String login ;
+	private String pass ;
+	
+	private SessaoUsuario sessaoUsuario ;
+	
+	public LoginBean() {
+		this.sessaoUsuario = new SessaoUsuario() ;
 	}
 
 	public String autentica() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		if (LoginBean.mapa.containsKey(this.login)
-				&& LoginBean.mapa.get(this.login).equals(this.pass)) {
-			ExternalContext ec = fc.getExternalContext();
-			HttpSession session = (HttpSession) ec.getSession(false);
-			session.setAttribute("user", this.login);
-			return "/home";
-		} else {
+		UsuarioRepositorio repo = new UsuarioRepositorio() ;
+		String passwordMd5 = Util.MD5( this.pass ) ;
+		
+		Usuario usuario;
+		try {
+			usuario = repo.login( this.login , passwordMd5 );
+			this.sessaoUsuario.login( usuario ) ;
+			return "/home" ;
+			
+		} catch (UserNotFoundException e) {
 			FacesMessage fm = new FacesMessage("usuário e/ou senha inválidos");
+			FacesContext fc = FacesContext.getCurrentInstance();
 			fm.setSeverity(FacesMessage.SEVERITY_ERROR);
-			fc.addMessage(null, fm);
+			fc.addMessage( null , fm ) ;
 			return "/login";
 		}
 	}
 
 	public String registraSaida() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		ExternalContext ec = fc.getExternalContext();
-		HttpSession session = (HttpSession) ec.getSession(false);
-		session.removeAttribute("user");
+		this.sessaoUsuario.logout() ;
+		
 		return "/login";
 	}
 

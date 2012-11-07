@@ -18,6 +18,7 @@ public class ControleDeAcesso implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
+		
 		if (session.getAttribute("user") != null
 				|| req.getRequestURI().endsWith("login.xhtml")
 				//Adicionar aqui quais URLS não serão filtradas para o login. 
@@ -28,6 +29,7 @@ public class ControleDeAcesso implements Filter {
 			HttpServletResponse res = (HttpServletResponse) response;
 			res.sendRedirect("login.xhtml");
 		}
+		
 	}
 
 	@Override
