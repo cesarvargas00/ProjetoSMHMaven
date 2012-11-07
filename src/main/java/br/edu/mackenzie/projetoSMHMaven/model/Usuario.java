@@ -1,7 +1,8 @@
 package br.edu.mackenzie.projetoSMHMaven.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Set;
+
 import javax.persistence.*;
 //TODO Como agente vai implementar o avatar ( profile picture )? Agente vai fazer um upload direto pro banco?
 //Como faz isso?
@@ -27,8 +28,8 @@ public class Usuario {
 
 	private String avatar;
 
-	@OneToMany
-	private Collection<Comentario> comentarios = new ArrayList<Comentario>();
+	@OneToMany( mappedBy = "owner" )
+	private Set<Comentario> comentarios ;
 
 	// g&s
 
@@ -80,11 +81,11 @@ public class Usuario {
 		this.avatar = avatar;
 	}
 
-	public Collection<Comentario> getComentarios() {
+	public Set<Comentario> getComentarios() {
 		return comentarios;
 	}
 
-	public void setComentarios(Collection<Comentario> comentarios) {
+	public void setComentarios(Set<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
 	

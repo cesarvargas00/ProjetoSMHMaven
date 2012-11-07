@@ -2,7 +2,8 @@ package br.edu.mackenzie.projetoSMHMaven.model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,10 +21,8 @@ public class Post {
 	@ManyToOne
 	private Admin owner;
 
-	@OneToMany
-	private Collection<Comentario> comentarios = new ArrayList<Comentario>();
-
-	// g&s
+	@OneToMany( mappedBy = "post" )
+	private Set<Comentario> comentarios ;
 
 	public Long getId() {
 		return id;
@@ -57,11 +56,11 @@ public class Post {
 		this.owner = owner;
 	}
 
-	public Collection<Comentario> getComentarios() {
+	public Set<Comentario> getComentarios() {
 		return comentarios;
 	}
 
-	public void setComentarios(Collection<Comentario> comentarios) {
+	public void setComentarios( Set<Comentario> comentarios ) {
 		this.comentarios = comentarios;
 	}
 

@@ -8,18 +8,19 @@ public class Comentario {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@Column(nullable = false, length = 150)
 	private String comentario;
-	
+
 	@ManyToOne
 	private Usuario owner;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dateOfCreation;
 
-	//g&s
-	
+	@ManyToOne
+	private Post post ;
+
 	public Long getId() {
 		return id;
 	}
@@ -51,7 +52,7 @@ public class Comentario {
 	public void setDateOfCreation(Calendar dateOfCreation) {
 		this.dateOfCreation = dateOfCreation;
 	}
-	
-	
-	
+
+
+
 }
