@@ -17,7 +17,7 @@ public class Usuario {
 	@Column(length = 50, nullable = false, unique = true)
 	private String email;
 
-	@Column(length = 30, nullable = false)
+	@Column(length = 32, nullable = false)
 	private String password;
 
 	@Column(length = 30, nullable = false)
@@ -87,6 +87,10 @@ public class Usuario {
 
 	public void setComentarios(Set<Comentario> comentarios) {
 		this.comentarios = comentarios;
+	}
+	
+	public String toString() {
+		return this.firstName + " - " + this.email ;
 	}
 	
 }
