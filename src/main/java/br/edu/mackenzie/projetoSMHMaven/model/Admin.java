@@ -17,6 +17,10 @@ public class Admin extends Usuario {
 	public Set<Post> getPosts() {
 		return posts;
 	}
+	
+	public boolean isAdmin() {
+		return true ;
+	}
 
 	public void setPosts(Set<Post> posts) {
 		this.posts = posts;

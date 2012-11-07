@@ -96,7 +96,7 @@ public class Usuario {
 	}
 	
 	public boolean isAdmin() {
-		return this.getClass().getSimpleName().equals( "Admin" ) ; 
+		return false ;
 	}
 	
 	public String toString() {
