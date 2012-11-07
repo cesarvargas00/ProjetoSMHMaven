@@ -19,7 +19,7 @@ public class Post {
 	private Calendar dateOfCreation;
 
 	@ManyToOne
-	private Admin owner;
+	private Usuario owner;
 
 	@OneToMany( mappedBy = "post" )
 	private Set<Comentario> comentarios ;
@@ -48,11 +48,11 @@ public class Post {
 		this.dateOfCreation = dateOfCreation;
 	}
 
-	public Admin getOwner() {
+	public Usuario getOwner() {
 		return owner;
 	}
 
-	public void setOwner(Admin owner) {
+	public void setOwner(Usuario owner) {
 		this.owner = owner;
 	}
 

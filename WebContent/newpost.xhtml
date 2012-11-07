@@ -1,0 +1,24 @@
+<ui:composition template="/WEB-INF/includes/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:define name="conteudo">
+<div class="row">
+
+<!-- Coluna 1 -->
+<div class="span12">
+
+<h1>Nova postagem</h1>
+
+<p>Voce pode usar textile para formatar seu texto, veja mais detalhes <a href="http://en.wikipedia.org/wiki/Textile_%28markup_language%29">aqui</a>.</p>
+
+<h:messages class="alert_messages" errorClass="alert alert-error" warnClass="alert alert-warn" infoClass="alert alert-success"/>
+
+<h:form>
+<h:inputTextarea value="#{newpost.conteudo}" class="span12"/>
+<h:commandButton class="btn btn-large btn-primary" value="Incluir post" action="#{newpost.incluiPost}"/>
+</h:form>
+
+</div>
+<!-- /Coluna 1 -->
+
+</div>
+</ui:define>
+</ui:composition>
