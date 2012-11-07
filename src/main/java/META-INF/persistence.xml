@@ -38,7 +38,7 @@
 
             <property
                 name="javax.persistence.jdbc.password"
-                value="123" />
+                value="toor" />
         </properties>
     </persistence-unit>
 
