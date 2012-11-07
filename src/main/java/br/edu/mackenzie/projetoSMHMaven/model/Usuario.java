@@ -7,6 +7,8 @@ import javax.persistence.*;
 //TODO Como agente vai implementar o avatar ( profile picture )? Agente vai fazer um upload direto pro banco?
 //Como faz isso?
 
+import br.edu.mackenzie.projetoSMHMaven.util.Util;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Usuario {
@@ -55,6 +57,10 @@ public class Usuario {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public void setPasswordMD5(String password) {
+		this.password = Util.MD5( password ) ;
 	}
 
 	public String getFirstName() {
