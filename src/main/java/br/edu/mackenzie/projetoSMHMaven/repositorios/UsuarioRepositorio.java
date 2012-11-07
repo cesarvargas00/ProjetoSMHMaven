@@ -7,6 +7,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.edu.mackenzie.projetoSMHMaven.exception.UserNotFoundException;
+import br.edu.mackenzie.projetoSMHMaven.model.Admin;
 import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
 
 public class UsuarioRepositorio extends Repositorio {
@@ -39,7 +40,7 @@ public class UsuarioRepositorio extends Repositorio {
 		query.setParameter( "email" , email ) ;
 		
 		try {
-			usuario = (Usuario) query.getSingleResult() ;			
+			usuario = (Usuario) query.getSingleResult() ;
 		}
 		catch ( NoResultException e ) {
 			

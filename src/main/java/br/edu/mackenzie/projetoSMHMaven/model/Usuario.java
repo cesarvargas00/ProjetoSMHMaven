@@ -95,6 +95,10 @@ public class Usuario {
 		this.comentarios = comentarios;
 	}
 	
+	public boolean isAdmin() {
+		return this.getClass().getSimpleName().equals( "Admin" ) ; 
+	}
+	
 	public String toString() {
 		return this.firstName + " - " + this.email ;
 	}
