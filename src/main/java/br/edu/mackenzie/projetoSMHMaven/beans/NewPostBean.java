@@ -17,26 +17,44 @@ import net.sf.textile4j.Textile;
 @ManagedBean( name = "newpost" )
 public class NewPostBean {
 	
+	private Post post ;
+	
 	private String conteudo ;
 	
-	public void incluiPost() {
-		this.conteudo = this.conteudo.trim() ;
-		if ( this.conteudo.equals( "" ) ) {
+	public NewPostBean() {
+		this.post = new Post() ;
+	}
+	
+	public String incluiPost() {
+		String title = this.post.getTitle() ;
+		title = title.trim() ;
+		
+		if ( title.equals( "" ) ) {
+			this.addMessage( "Título vazio" , FacesMessage.SEVERITY_WARN ) ;
+			return "newpost" ;
+		}
+		
+		String content = this.post.getContent() ;
+		content = content.trim() ;
+		
+		if ( content.equals( "" ) ) {
 			this.addMessage( "Conteudo vazio" , FacesMessage.SEVERITY_WARN ) ;
+			return "newpost" ;
 		}
 		
 		Textile textile = new Textile() ;
-		String conteudoProcess = textile.process( this.conteudo ).trim() ;
+		String htmlContent = textile.process( content ).trim() ;
+		this.post.setContent( htmlContent ) ;
+		this.post.setOwner(this.getUsuarioLogado()) ;
+		this.post.setDateOfCreation(Calendar.getInstance()) ;
 		
 		PostRepositorio repo = new PostRepositorio() ;
-		Post post = new Post() ;
-		post.setContent( conteudoProcess ) ;
-		post.setOwner(this.getUsuarioLogado()) ;
-		post.setDateOfCreation(Calendar.getInstance()) ;
-		
-		repo.persistir(post) ;
+		repo.persistir( post ) ;
 		
 		this.addMessage( "Post incluido.." , FacesMessage.SEVERITY_INFO ) ;
+		
+		this.post = new Post() ;
+		return "newpost" ;
 	}
 	
 	private void addMessage( String message , Severity severity ) {
@@ -47,8 +65,7 @@ public class NewPostBean {
 	}
 	
 	private Usuario getUsuarioLogado() {
-		SessaoUsuario sessaoUsuario = new SessaoUsuario() ;
-		return sessaoUsuario.getUser() ;
+		return SessaoUsuario.getInstance().getUser() ;
 	}
 
 	/**
@@ -63,5 +80,19 @@ public class NewPostBean {
 	 */
 	public void setConteudo(String conteudo) {
 		this.conteudo = conteudo;
+	}
+
+	/**
+	 * @return the post
+	 */
+	public Post getPost() {
+		return post;
+	}
+
+	/**
+	 * @param post the post to set
+	 */
+	public void setPost(Post post) {
+		this.post = post;
 	}	
 }

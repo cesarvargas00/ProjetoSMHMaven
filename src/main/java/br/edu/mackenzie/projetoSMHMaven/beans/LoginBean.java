@@ -19,12 +19,6 @@ public class LoginBean {
 	private String login ;
 	private String pass ;
 	
-	private SessaoUsuario sessaoUsuario ;
-	
-	public LoginBean() {
-		this.sessaoUsuario = new SessaoUsuario() ;
-	}
-
 	public String autentica() {
 		UsuarioRepositorio repo = new UsuarioRepositorio() ;
 		String passwordMd5 = Util.MD5( this.pass ) ;
@@ -32,7 +26,7 @@ public class LoginBean {
 		Usuario usuario;
 		try {
 			usuario = repo.login( this.login , passwordMd5 );
-			this.sessaoUsuario.login( usuario ) ;
+			SessaoUsuario.getInstance().login( usuario ) ;
 			return "/home" ;
 			
 		} catch (UserNotFoundException e) {
@@ -45,7 +39,7 @@ public class LoginBean {
 	}
 
 	public String registraSaida() {
-		this.sessaoUsuario.logout() ;
+		SessaoUsuario.getInstance().logout() ;
 		
 		return "/login";
 	}
