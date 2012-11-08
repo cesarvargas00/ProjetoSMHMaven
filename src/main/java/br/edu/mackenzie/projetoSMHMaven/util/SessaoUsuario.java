@@ -6,15 +6,22 @@ import javax.servlet.http.HttpSession;
 
 import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
 
+/**
+ * Gerencia a sessao do usuário, utiliza um singleton
+ * @author Alisson
+ *
+ */
 public class SessaoUsuario {
 	
 	private static final String USER_LOGGED_CONTROL = "user_logged" ;
 	
 	private static final String USER_LOGGED_OBJECT = "user_object" ;
 	
+	public static SessaoUsuario sessaoUsuarioInstance ;
+	
 	HttpSession httpSession ;
 	
-	public SessaoUsuario() {
+	private SessaoUsuario() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		ExternalContext ec = fc.getExternalContext();
 		this.httpSession = (HttpSession) ec.getSession( false ) ;
@@ -43,5 +50,13 @@ public class SessaoUsuario {
 	public void login( Usuario usuario ) {
 		this.httpSession.setAttribute( USER_LOGGED_CONTROL , true ) ;
 		this.httpSession.setAttribute( USER_LOGGED_OBJECT , usuario ) ;
+	}
+	
+	public static SessaoUsuario getInstance() {
+		if ( sessaoUsuarioInstance == null ) {
+			sessaoUsuarioInstance = new SessaoUsuario() ;
+		}
+		
+		return sessaoUsuarioInstance ;
 	}
 }
