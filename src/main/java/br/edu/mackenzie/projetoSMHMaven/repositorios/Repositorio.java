@@ -2,8 +2,6 @@ package br.edu.mackenzie.projetoSMHMaven.repositorios;
 
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 
 import br.edu.mackenzie.projetoSMHMaven.filter.HibernateFilter;
