@@ -21,4 +21,9 @@ public abstract class Repositorio {
 	protected EntityManager getManager() {
 		return manager;
 	}
+	
+	public Object merge(Object o){
+		this.manager.merge(o);
+		return o;
+	}
 }

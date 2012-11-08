@@ -1,65 +1,75 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
-    <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>#{pageTitle}</title>
-        <meta name="description" content=""/>
-        <meta name="viewport" content="width=device-width"/>
-        <link rel="stylesheet" href="/ProjetoSMHMaven/resources/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/ProjetoSMHMaven/resources/common.css"/>
-    </head>
-    <body>
-        <!-- NavBar -->
-        <div class="navbar">
-            <div class="navbar-inner">
-                <a class="brand" href="/ProjetoSMHMaven/">MackBlog</a>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>#{pageTitle}</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet"
+	href="/ProjetoSMHMaven/resources/bootstrap.min.css" />
+<link rel="stylesheet" href="/ProjetoSMHMaven/resources/common.css" />
+</head>
+<body>
+	<!-- NavBar -->
+	<div class="navbar">
+		<div class="navbar-inner">
+			<a class="brand" href="/ProjetoSMHMaven/">MackBlog</a>
 
-                <ul class="nav">
-                    <li class="active">
-                        <a href="/ProjetoSMHMaven/">Home</a>
-                    </li>
-                    <h:outputText rendered="#{usuarioBean.isLogged and usuarioBean.user.admin}">
-                    <li><a href="/ProjetoSMHMaven/admin/newpost.xhtml">Novo post</a></li>
-                    </h:outputText>
-                    <h:outputText rendered="#{!usuarioBean.isLogged}">
-                    <li><a href="/ProjetoSMHMaven/novoUser.xhtml">Cadastro</a></li>
-                    </h:outputText>
-                </ul>
+			<ul class="nav">
+				<li class="active"><a href="/ProjetoSMHMaven/">Home</a></li>
+				<h:outputText
+					rendered="#{usuarioBean.isLogged and usuarioBean.user.admin}">
+					<li><a href="/ProjetoSMHMaven/admin/newpost.xhtml">Novo
+							post</a></li>
+				</h:outputText>
+				<h:outputText rendered="#{!usuarioBean.isLogged}">
+					<li><a href="/ProjetoSMHMaven/novoUser.xhtml">Cadastro</a></li>
+					</h:outputText>
+					<li><h:form>
+							<h:commandLink rendered="#{usuarioBean.isLogged}" value="Conta" action="#{usuarioBean.editUser}" />
+						</h:form>
+					</li>
+			</ul>
 
-                <h:form>
-                <ul class="nav pull-right">
-                    <h:outputText rendered="#{usuarioBean.isLogged}">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{usuarioBean.user.firstName} #{usuarioBean.user.lastName} <b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><h:commandLink value="Sair" action="#{usuarioBean.logout}"/></li>
-                        </ul>
-                    </li>
-                    </h:outputText>
-                    <h:outputText rendered="#{!usuarioBean.isLogged}">
-                    <li><h:commandLink value="Login" action="#{usuarioBean.login}"/></li>
-                    </h:outputText>
-                </ul>
-                </h:form>
-            </div>
-        </div>
-        <!-- /NavBar -->
+			<h:form>
+				<ul class="nav pull-right">
+					<h:outputText rendered="#{usuarioBean.isLogged}">
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">#{usuarioBean.user.firstName}
+								#{usuarioBean.user.lastName} <b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								<li><h:commandLink value="Sair"
+										action="#{usuarioBean.logout}" /></li>
+							</ul></li>
+					</h:outputText>
+					<h:outputText rendered="#{!usuarioBean.isLogged}">
+						<li><h:commandLink value="Login"
+								action="#{usuarioBean.login}" /></li>
+					</h:outputText>
+				</ul>
+			</h:form>
+		</div>
+	</div>
+	<!-- /NavBar -->
 
-        <!-- Cabecalho do site -->
-        <div class="container">
-        <h1 class="logotipo">MackBlog</h1>
-        </div>
-        <!-- /Cabecalho do site -->
+	<!-- Cabecalho do site -->
+	<div class="container">
+		<h1 class="logotipo">MackBlog</h1>
+	</div>
+	<!-- /Cabecalho do site -->
 
-        <!-- Container principal -->
-        <div class="container">
-        <ui:insert name="conteudo"></ui:insert>
-        </div>
-        <!-- /Container principal -->
+	<!-- Container principal -->
+	<div class="container">
+		<ui:insert name="conteudo"></ui:insert>
+	</div>
+	<!-- /Container principal -->
 
-        <script src="/ProjetoSMHMaven/resources/jquery-1.7.2.min.js"></script>
-        <script src="/ProjetoSMHMaven/resources/bootstrap.min.js"></script>
+	<script src="/ProjetoSMHMaven/resources/jquery-1.7.2.min.js"></script>
+	<script src="/ProjetoSMHMaven/resources/bootstrap.min.js"></script>
 
-    </body>
+</body>
 </html>

@@ -1,6 +1,5 @@
 package br.edu.mackenzie.projetoSMHMaven.repositorios;
 
-import javax.persistence.EntityManager;
 
 import br.edu.mackenzie.projetoSMHMaven.model.Comentario;
 

@@ -7,13 +7,11 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.edu.mackenzie.projetoSMHMaven.exception.UserNotFoundException;
-import br.edu.mackenzie.projetoSMHMaven.model.Admin;
 import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
 
 public class UsuarioRepositorio extends Repositorio {
 	
 	public void persistir( Usuario usuario ) {
-		EntityManager manager = this.getManager() ;
 		
 		this.getManager().persist( usuario ) ;
 	}

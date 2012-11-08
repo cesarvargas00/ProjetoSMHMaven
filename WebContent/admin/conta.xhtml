@@ -1,0 +1,33 @@
+<ui:composition template="/WEB-INF/includes/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+<ui:param name="pageTitle" value="Visualizar Conta"/>
+<ui:define name="conteudo">
+<div class="row">
+
+<!-- Coluna 1 -->
+<div class="span12">
+
+<h1>Painel de conta</h1>
+
+<h:messages class="alert_messages" errorClass="alert alert-error" warnClass="alert alert-warn" infoClass="alert alert-success"/>
+
+<h:form>
+<fieldset>
+<legend>conta: #{usuarioBean.usuario.email}</legend>
+<h:outputLabel value="Nome" for="usuario-nome"/>
+<h:inputText id="usuario-nome" value="#{usuarioBean.usuario.firstName}" class="span6"/>
+<h:outputLabel value="Sobrenome" for="usuario-lastName"/>
+<h:inputText id="usuario-lastName" value="#{usuarioBean.usuario.lastName}" class="span6"/>
+<h:outputLabel value="Senha" for="usuario-senha"/>
+<h:inputSecret id="usuario-senha" value="#{usuarioBean.usuario.password}" class="span6"/>
+<!-- <f:setPropertyActionListener target="#{comentarioBean.postId}" value="#{post.id}" />
+</h:commandButton> -->
+</fieldset>
+<h:commandButton class="btn btn-large btn-primary" value="Salvar" action="#{usuarioBean.salvar}"/>
+</h:form>
+
+</div>
+<!-- /Coluna 1 -->
+
+</div>
+</ui:define>
+</ui:composition>

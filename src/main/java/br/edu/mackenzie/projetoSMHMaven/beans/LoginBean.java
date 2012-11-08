@@ -1,12 +1,9 @@
 package br.edu.mackenzie.projetoSMHMaven.beans;
 
-import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 import br.edu.mackenzie.projetoSMHMaven.exception.UserNotFoundException;
 import br.edu.mackenzie.projetoSMHMaven.model.Usuario;

@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 
 import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
 import br.edu.mackenzie.projetoSMHMaven.repositorios.UsuarioRepositorio;
-import br.edu.mackenzie.projetoSMHMaven.util.Util;
 
 @ManagedBean
 public class CadastroBean {

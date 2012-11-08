@@ -8,7 +8,8 @@ import javax.persistence.*;
 import br.edu.mackenzie.projetoSMHMaven.util.Util;
 
 @Entity
-public class Post {
+public class Post{
+
 	@Id
 	@GeneratedValue
 	private Long id;

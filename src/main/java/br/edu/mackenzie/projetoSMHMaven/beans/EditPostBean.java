@@ -1,18 +1,21 @@
 package br.edu.mackenzie.projetoSMHMaven.beans;
 
+import java.util.Calendar;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import net.sf.textile4j.Textile;
 
 import br.edu.mackenzie.projetoSMHMaven.model.Post;
 import br.edu.mackenzie.projetoSMHMaven.repositorios.PostRepositorio;
-import br.edu.mackenzie.projetoSMHMaven.repositorios.UsuarioRepositorio;
 import br.edu.mackenzie.projetoSMHMaven.util.SessaoUsuario;
 
 @ManagedBean( name = "editpost" )
+@SessionScoped
 public class EditPostBean {
 
 	public Long postId ;
@@ -42,8 +45,9 @@ public class EditPostBean {
 			return "index" ;
 		}
 		
-		this.post.setOwner(SessaoUsuario.getInstance().getUser()) ; 
-
+		this.post.setOwner(SessaoUsuario.getInstance().getUser());
+		PostRepositorio repo = new PostRepositorio() ;
+		
 		if ( this.post.getTitle().equals( "" ) ) {
 			this.addMessage( "Título vazio" , FacesMessage.SEVERITY_WARN ) ;
 			return "editpost" ;
@@ -57,15 +61,15 @@ public class EditPostBean {
 			return "editpost" ;
 		}
 		
-		System.out.println( this.post ) ;
+		System.out.println( this.post.getTitle() ) ;
 
 		Textile textile = new Textile() ;
 		String htmlContent = textile.process( content ).trim() ;
 		this.post.setContent( htmlContent ) ;
 		this.post.setContentTextile( content ) ;
-
+		this.post.setDateOfCreation(Calendar.getInstance());
 		this.addMessage( "Postagem salva" , FacesMessage.SEVERITY_INFO ) ;
-
+		repo.merge(this.post);
 		return "index" ;
 	}
 

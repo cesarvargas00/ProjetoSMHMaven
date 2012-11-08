@@ -2,18 +2,14 @@ package br.edu.mackenzie.projetoSMHMaven.repositorios;
 
 import java.util.List;
 
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.servlet.http.HttpServletRequest;
 
 import br.edu.mackenzie.projetoSMHMaven.model.Post;
-import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
 
 public class PostRepositorio extends Repositorio {
 	
 	public void persistir( Post post ) {
-		EntityManager manager = this.getManager() ;
 		
 		this.getManager().persist( post ) ;
 	}
@@ -30,8 +26,10 @@ public class PostRepositorio extends Repositorio {
 	
 	public Post getById( Long id ) {
 		EntityManager manager = this.getManager() ;
-		Post post = manager.find( Post.class , id ) ;
+		Post post = manager.getReference( Post.class , id ) ;
 		return post ;
 	}
+	
+	
 	
 }
