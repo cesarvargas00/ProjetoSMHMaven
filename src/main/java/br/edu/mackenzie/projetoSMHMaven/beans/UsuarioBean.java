@@ -23,5 +23,14 @@ public class UsuarioBean {
 	public Boolean getIsLogged() {
 		return SessaoUsuario.getInstance().isLogged() ;
 	}
+	
+	public String login() {
+		return "/login.xhtml" ;
+	}
+	
+	public String logout() {
+		SessaoUsuario.getInstance().logout() ;
+		return "/index.xhtml" ;
+	}
 
 }

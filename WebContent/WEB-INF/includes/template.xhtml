@@ -29,12 +29,12 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{usuarioBean.user.firstName} #{usuarioBean.user.lastName} <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a href="#">Sair</a></li>
+                            <li><h:commandLink value="Sair" action="#{usuarioBean.logout}"/></li>
                         </ul>
                     </li>
                     </h:outputText>
                     <h:outputText rendered="#{!usuarioBean.isLogged}">
-                    <li><a href="#">Login</a></li>
+                    <li><h:commandLink value="Login" action="#{usuarioBean.login}"/></li>
                     </h:outputText>
                 </ul>
             </div>
