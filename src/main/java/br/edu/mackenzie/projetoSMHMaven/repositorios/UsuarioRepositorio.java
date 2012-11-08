@@ -40,7 +40,7 @@ public class UsuarioRepositorio extends Repositorio {
 			usuario = (Usuario) query.getSingleResult() ;
 		}
 		catch ( NoResultException e ) {
-			
+			System.out.println("Nao encontrado...");
 		}
 		
 		if ( usuario != null ) {
