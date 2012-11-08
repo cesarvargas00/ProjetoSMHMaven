@@ -1,11 +1,66 @@
-<ui:composition template="/WEB-INF/includes/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">>
-<ui:param name="pageTitle" value="Login"/>
+<ui:composition template="/WEB-INF/includes/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:define name="conteudo">
 <div class="row">
 
-<div class="span12">
-<h2>Login</h2>
+<!-- Coluna 1 -->
+<div class="span8">
 
+Teste: #{postBean.teste}
+
+<ui:repeat var="post" value="#{postBean.posts}">
+<!-- Exemplo de post -->
+<div class="post">
+<h2>#{post.title}</h2>
+<div class="info">Publicado em 20/11/2012 às 12h30 por #{post.owner.firstName} #{post.owner.lastName}</div>
+<section>
+
+<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+
+<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+
+</section>
+
+<!-- Comentários -->
+<section class="comments">
+
+<h4>Comentários (2)</h4>
+
+<div class="comment">
+<div class="comment-info"><span class="user-name">Alisson dos Reis Perez</span><span class="time">10/11/2012 22h30</span></div>
+<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+</div>
+
+<div class="comment">
+<div class="comment-info"><span class="user-name">Alisson dos Reis Perez</span><span class="time">10/11/2012 22h30</span></div>
+<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+</div>
+
+<div class="new-comment">
+<form action="#">
+<textarea rows="3"></textarea>
+<p>
+<input class="btn btn-primary" type="submit" name="send_comment" value="Enviar"/>
+</p>
+</form>
+</div>
+
+</section>
+<!-- /Comentários -->
+
+</div>
+<!-- /Exemplo de post -->
+</ui:repeat>
+
+</div>
+<!-- /Coluna 1 -->
+
+<!-- Coluna 1 -->
+<div class="span4">
+
+</div>
+<!-- /Coluna 1 -->
 
 
 </div>

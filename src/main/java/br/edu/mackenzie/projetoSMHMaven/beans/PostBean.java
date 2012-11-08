@@ -7,7 +7,7 @@ import br.edu.mackenzie.projetoSMHMaven.repositorios.PostRepositorio;
 
 @ManagedBean
 public class PostBean {
-	
+		
 	private List<Post> posts ;
 	
 	public PostBean() {
@@ -21,12 +21,4 @@ public class PostBean {
 	public List<Post> getPosts() {
 		return posts;
 	}
-
-	/**
-	 * @param posts the posts to set
-	 */
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
-	}
-
 }
