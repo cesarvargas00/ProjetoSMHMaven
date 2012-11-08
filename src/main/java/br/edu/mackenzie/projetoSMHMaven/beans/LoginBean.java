@@ -30,7 +30,7 @@ public class LoginBean {
 			return "/home" ;
 			
 		} catch (UserNotFoundException e) {
-			FacesMessage fm = new FacesMessage("usuário e/ou senha inválidos");
+			FacesMessage fm = new FacesMessage( "usuário e/ou senha inválidos" ) ;
 			FacesContext fc = FacesContext.getCurrentInstance();
 			fm.setSeverity(FacesMessage.SEVERITY_ERROR);
 			fc.addMessage( null , fm ) ;

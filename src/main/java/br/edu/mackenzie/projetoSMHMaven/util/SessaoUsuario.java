@@ -15,7 +15,7 @@ import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
  */
 public class SessaoUsuario {
 	
-	private static final String USER_LOGGED_CONTROL = "user_logged" ;
+	private static final String USER_LOGGED_CONTROL = "user_is_logged" ;
 	
 	private static final String USER_LOGGED_OBJECT = "user_object" ;
 	
@@ -25,6 +25,7 @@ public class SessaoUsuario {
 		
 	private SessaoUsuario( HttpSession session ) {
 		this.httpSession = session ;
+		this.logout() ;
 	}
 	
 	public boolean isLogged() {
@@ -35,7 +36,6 @@ public class SessaoUsuario {
 	
 	public void logout() {
 		this.httpSession.removeAttribute( USER_LOGGED_CONTROL ) ;
-		
 		this.httpSession.removeAttribute( USER_LOGGED_OBJECT ) ;
 	}
 	

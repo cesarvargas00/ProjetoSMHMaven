@@ -15,9 +15,12 @@ import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
 import br.edu.mackenzie.projetoSMHMaven.util.SessaoUsuario;
 
 public class AdminAccess implements Filter {
+	
+	private static final String LOGIN_URL = "/ProjetoSMHMaven/login.xhtml" ;
 
 	@Override
 	public void destroy() {
+		
 	}
 
 	@Override
@@ -27,18 +30,18 @@ public class AdminAccess implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		
 		if ( ! SessaoUsuario.getInstance( request ).isLogged() ) {
-			res.sendRedirect( "login.xhtml" ) ;
+			res.sendRedirect( LOGIN_URL ) ;
 		}
-		
-		Usuario usuario = SessaoUsuario.getInstance( request ).getUser() ;
-		
-		System.out.println("Logado: " + SessaoUsuario.getInstance( request ).isLogged() ) ;
-		
-		if ( ! usuario.isAdmin() ) {
-			res.sendRedirect("login.xhtml");
+		else {
+			Usuario usuario = SessaoUsuario.getInstance( request ).getUser() ;
+			
+			if ( ! usuario.isAdmin() ) {
+				res.sendRedirect( LOGIN_URL ) ;
+			}
+			else {
+				chain.doFilter( request , response ) ;				
+			}
 		}
-		
-		chain.doFilter( request , response ) ;
 	}
 
 	@Override
