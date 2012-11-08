@@ -16,9 +16,6 @@ public class UsuarioRepositorio extends Repositorio {
 		EntityManager manager = this.getManager() ;
 		
 		this.getManager().persist( usuario ) ;
-		
-		manager.getTransaction().begin() ;
-		manager.getTransaction().commit() ;
 	}
 	
 	public List<Usuario> getUsuarios() {

@@ -16,9 +16,6 @@ public class PostRepositorio extends Repositorio {
 		EntityManager manager = this.getManager() ;
 		
 		this.getManager().persist( post ) ;
-		
-		manager.getTransaction().begin() ;
-		manager.getTransaction().commit() ;
 	}
 
 	public List<Post> getAllPosts() {
