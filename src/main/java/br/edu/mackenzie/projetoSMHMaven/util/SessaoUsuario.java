@@ -35,6 +35,7 @@ public class SessaoUsuario {
 	
 	public void logout() {
 		this.httpSession.removeAttribute( USER_LOGGED_CONTROL ) ;
+		
 		this.httpSession.removeAttribute( USER_LOGGED_OBJECT ) ;
 	}
 	
