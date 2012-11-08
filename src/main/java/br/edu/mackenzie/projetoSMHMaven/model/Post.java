@@ -59,6 +59,26 @@ public class Post {
 	public Calendar getDateOfCreation() {
 		return dateOfCreation;
 	}
+	
+	public String getDateFormmated() {
+		if ( this.dateOfCreation == null ) {
+			return "" ;
+		}
+		
+		String datetime = "" ;
+
+		datetime += this.dateOfCreation.get(Calendar.DAY_OF_MONTH) ;
+		datetime += "/" ;
+		datetime += this.dateOfCreation.get(Calendar.MONTH) ;
+		datetime += "/" ;
+		datetime += this.dateOfCreation.get(Calendar.YEAR) ;
+		datetime += " às " ;
+		datetime += this.dateOfCreation.get(Calendar.AM) ;
+		datetime += "h" ;
+		datetime += this.dateOfCreation.get(Calendar.MINUTE) ;
+		
+		return datetime ;
+	}
 
 	public void setDateOfCreation(Calendar dateOfCreation) {
 		this.dateOfCreation = dateOfCreation;
