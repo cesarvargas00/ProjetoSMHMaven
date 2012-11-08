@@ -63,4 +63,28 @@
         <url-pattern>/faces/*</url-pattern>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+
+    <!-- Filtro de login -->
+    <filter>
+        <filter-name>AdminAccess</filter-name>
+        <filter-class>br.edu.mackenzie.projetoSMHMaven.filter.AdminAccess</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AdminAccess</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
 </web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
