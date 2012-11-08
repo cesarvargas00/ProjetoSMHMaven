@@ -21,10 +21,13 @@
                     </li>
                     <h:outputText rendered="#{usuarioBean.isLogged and usuarioBean.user.admin}">
                     <li><a href="/ProjetoSMHMaven/admin/newpost.xhtml">Novo post</a></li>
+                    </h:outputText>
+                    <h:outputText rendered="#{!usuarioBean.isLogged}">
                     <li><a href="/ProjetoSMHMaven/novoUser.xhtml">Cadastro</a></li>
                     </h:outputText>
                 </ul>
 
+                <h:form>
                 <ul class="nav pull-right">
                     <h:outputText rendered="#{usuarioBean.isLogged}">
                     <li class="dropdown">
@@ -38,6 +41,7 @@
                     <li><h:commandLink value="Login" action="#{usuarioBean.login}"/></li>
                     </h:outputText>
                 </ul>
+                </h:form>
             </div>
         </div>
         <!-- /NavBar -->
