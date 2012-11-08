@@ -19,18 +19,24 @@
                     <li class="active">
                         <a href="/ProjetoSMHMaven/">Home</a>
                     </li>
+                    <h:outputText rendered="#{usuarioBean.isLogged and usuarioBean.user.admin}">
                     <li><a href="/ProjetoSMHMaven/admin/newpost.xhtml">Novo post</a></li>
                     <li><a href="/ProjetoSMHMaven/novoUser.xhtml">Cadastro</a></li>
+                    </h:outputText>
                 </ul>
 
                 <ul class="nav pull-right">
+                    <h:outputText rendered="#{usuarioBean.isLogged}">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Alisson Perez <b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">#{usuarioBean.user.firstName} #{usuarioBean.user.lastName} <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li><a href="#">Sair</a></li>
                         </ul>
                     </li>
+                    </h:outputText>
+                    <h:outputText rendered="#{!usuarioBean.isLogged}">
                     <li><a href="#">Login</a></li>
+                    </h:outputText>
                 </ul>
             </div>
         </div>
