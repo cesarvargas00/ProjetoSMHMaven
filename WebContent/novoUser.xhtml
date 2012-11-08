@@ -1,0 +1,30 @@
+<ui:composition template="/WEB-INF/includes/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:param name="pageTitle" value="Nova postagem"/>
+<ui:define name="conteudo">
+<div class="row">
+
+<!-- Coluna 1 -->
+<div class="span12">
+
+<h1>Cadastrar</h1>
+
+<h:messages class="alert_messages" errorClass="alert alert-error" warnClass="alert alert-warn" infoClass="alert alert-success"/>
+
+<h:form>
+<fieldset>
+<legend>Cadastro</legend>
+<h:outputLabel value="Nome" for="post-title"/>
+<h:inputText id="post-title" value="#{newpost.post.title}" class="span12"/>
+<h:outputLabel value="Conteúdo" for="post-title"/>
+<h:inputTextarea value="#{newpost.post.content}" class="span12"/>
+<span class="help-block">Você pode usar textile para formatar seu texto, veja mais detalhes <a href="http://en.wikipedia.org/wiki/Textile_%28markup_language%29" target="_blank">aqui</a>.</span>
+<h:commandButton class="btn btn-large btn-primary" value="Incluir post" action="#{newpost.incluiPost}"/>
+</fieldset>
+</h:form>
+
+</div>
+<!-- /Coluna 1 -->
+
+</div>
+</ui:define>
+</ui:composition>

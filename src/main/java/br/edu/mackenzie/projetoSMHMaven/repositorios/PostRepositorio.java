@@ -2,8 +2,10 @@ package br.edu.mackenzie.projetoSMHMaven.repositorios;
 
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 
 import br.edu.mackenzie.projetoSMHMaven.model.Post;
 import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
@@ -25,7 +27,7 @@ public class PostRepositorio extends Repositorio {
 		
 		Query query = manager.createQuery( "SELECT p FROM Post p" ) ;
 		posts = query.getResultList() ;
-		
+
 		return posts ;
 	}
 	
