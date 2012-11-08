@@ -1,21 +1,25 @@
 package br.edu.mackenzie.projetoSMHMaven.model;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
+
+import br.edu.mackenzie.projetoSMHMaven.util.Util;
 
 @Entity
 public class Post {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private String title ;
 
 	@Lob
-	private String content;	
+	private String content;
+
+	@Lob
+	private String contentTextile ;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dateOfCreation;
@@ -24,7 +28,7 @@ public class Post {
 	private Usuario owner;
 
 	@OneToMany( mappedBy = "post" )
-	private Set<Comentario> comentarios ;
+	private List<Comentario> comentarios ;
 
 	public Long getId() {
 		return id;
@@ -56,28 +60,26 @@ public class Post {
 		this.content = content;
 	}
 
+	/**
+	 * @return the contentTextile
+	 */
+	public String getContentTextile() {
+		return contentTextile;
+	}
+
+	/**
+	 * @param contentTextile the contentTextile to set
+	 */
+	public void setContentTextile(String contentTextile) {
+		this.contentTextile = contentTextile;
+	}
+
 	public Calendar getDateOfCreation() {
 		return dateOfCreation;
 	}
-	
-	public String getDateFormmated() {
-		if ( this.dateOfCreation == null ) {
-			return "" ;
-		}
-		
-		String datetime = "" ;
 
-		datetime += this.dateOfCreation.get(Calendar.DAY_OF_MONTH) ;
-		datetime += "/" ;
-		datetime += this.dateOfCreation.get(Calendar.MONTH) ;
-		datetime += "/" ;
-		datetime += this.dateOfCreation.get(Calendar.YEAR) ;
-		datetime += " às " ;
-		datetime += this.dateOfCreation.get(Calendar.AM) ;
-		datetime += "h" ;
-		datetime += this.dateOfCreation.get(Calendar.MINUTE) ;
-		
-		return datetime ;
+	public String getDateFormmated() {
+		return Util.formmatCallendar( this.dateOfCreation ) ;
 	}
 
 	public void setDateOfCreation(Calendar dateOfCreation) {
@@ -92,12 +94,19 @@ public class Post {
 		this.owner = owner;
 	}
 
-	public Set<Comentario> getComentarios() {
+	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
 
-	public void setComentarios( Set<Comentario> comentarios ) {
-		this.comentarios = comentarios;
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", title=" + title + ", content=" + content
+				+ ", contentTextile=" + contentTextile + ", dateOfCreation="
+				+ dateOfCreation + ", owner=" + owner + ", comentarios="
+				+ comentarios + "]";
 	}
-
+	
 }

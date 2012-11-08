@@ -60,7 +60,7 @@ public class Usuario {
 	}
 	
 	public void setPasswordMD5(String password) {
-		this.password = Util.MD5( password ) ;
+		this.password = Util.MD5( password.trim() ) ;
 	}
 
 	public String getFirstName() {

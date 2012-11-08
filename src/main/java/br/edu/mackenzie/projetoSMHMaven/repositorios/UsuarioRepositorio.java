@@ -34,7 +34,7 @@ public class UsuarioRepositorio extends Repositorio {
 		
 		Query query = manager.createQuery( "SELECT u FROM Usuario u WHERE email = :email and password = :password" ) ;
 		query.setParameter( "password" , passwordMd5 ) ;
-		query.setParameter( "email" , email ) ;
+		query.setParameter( "email" , email.trim() ) ;
 		
 		try {
 			usuario = (Usuario) query.getSingleResult() ;
@@ -50,4 +50,12 @@ public class UsuarioRepositorio extends Repositorio {
 		throw new UserNotFoundException() ;
 	}
 	
+	public Boolean emailExists( String email ) {
+		EntityManager manager = this.getManager() ;
+		
+		Query query = manager.createQuery( "SELECT u FROM Usuario u WHERE email = :email" ) ;
+		query.setParameter( "email" , email.trim() ) ;
+		
+		return query.getResultList().size() > 0 ;
+	}
 }

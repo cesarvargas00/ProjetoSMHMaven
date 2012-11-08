@@ -4,7 +4,8 @@
 .alert_messages { list-style-type: none ; }
 
 /* Estilos dos posts */
-.post { border-bottom: 1px solid #CCC; padding-top: 10px; }
+.post { border-bottom: 1px solid #CCC; padding-top: 10px; position: relative ;}
+.post .edit_post { position: absolute ; top: 15px ; right: 0 ; }
 .post section { padding: 10px 0 ; }
 .post .info { font-size: 10px; color: #999 ; }
 

@@ -18,17 +18,17 @@ import br.edu.mackenzie.projetoSMHMaven.util.Util;
 public class LoginBean {
 	private String login ;
 	private String pass ;
-	
+
 	public String autentica() {
 		UsuarioRepositorio repo = new UsuarioRepositorio() ;
 		String passwordMd5 = Util.MD5( this.pass ) ;
-		
+
 		Usuario usuario;
 		try {
 			usuario = repo.login( this.login , passwordMd5 );
 			SessaoUsuario.getInstance().login( usuario ) ;
-			return "/home" ;
-			
+			return "/index" ;
+
 		} catch (UserNotFoundException e) {
 			FacesMessage fm = new FacesMessage( "usuário e/ou senha inválidos" ) ;
 			FacesContext fc = FacesContext.getCurrentInstance();
@@ -40,7 +40,7 @@ public class LoginBean {
 
 	public String registraSaida() {
 		SessaoUsuario.getInstance().logout() ;
-		
+
 		return "/login";
 	}
 

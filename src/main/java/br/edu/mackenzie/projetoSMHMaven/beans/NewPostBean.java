@@ -45,6 +45,7 @@ public class NewPostBean {
 		Textile textile = new Textile() ;
 		String htmlContent = textile.process( content ).trim() ;
 		this.post.setContent( htmlContent ) ;
+		this.post.setContentTextile( content ) ;
 		this.post.setOwner(this.getUsuarioLogado()) ;
 		this.post.setDateOfCreation(Calendar.getInstance()) ;
 		

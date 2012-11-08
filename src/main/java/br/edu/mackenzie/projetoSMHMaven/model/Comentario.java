@@ -3,6 +3,8 @@ package br.edu.mackenzie.projetoSMHMaven.model;
 import java.util.Calendar;
 import javax.persistence.*;
 
+import br.edu.mackenzie.projetoSMHMaven.util.Util;
+
 @Entity
 public class Comentario {
 	@Id
@@ -52,7 +54,22 @@ public class Comentario {
 	public void setDateOfCreation(Calendar dateOfCreation) {
 		this.dateOfCreation = dateOfCreation;
 	}
+	
+	public String getDateFormmated() {
+		return Util.formmatCallendar( this.dateOfCreation ) ;
+	}
 
+	/**
+	 * @return the post
+	 */
+	public Post getPost() {
+		return post;
+	}
 
-
+	/**
+	 * @param post the post to set
+	 */
+	public void setPost(Post post) {
+		this.post = post;
+	}
 }

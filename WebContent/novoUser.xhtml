@@ -14,13 +14,15 @@
 <fieldset>
 <legend>Novo Usuario</legend>
 <h:outputLabel value="Nome" for="user-firstName"/>
-<h:inputText id="user-firstName" value="#{cadastroBean.usuario.firstName}" class="span6"/>
+<h:inputText id="user-firstName" value="#{cadastroBean.usuario.firstName}" class="span5"/>
 <h:outputLabel value="Sobrenome" for="user-lastName"/>
-<h:inputText id="user-lastName" value="#{cadastroBean.usuario.lastName}" class="span6"/>
+<h:inputText id="user-lastName" value="#{cadastroBean.usuario.lastName}" class="span5"/>
 <h:outputLabel value="Email" for="user-email"/>
-<h:inputText id="user-email" value="#{cadastroBean.usuario.email}" class="span6"/>
+<h:inputText id="user-email" value="#{cadastroBean.usuario.email}" class="span4"/>
 <h:outputLabel value="Senha" for="user-senha"/>
-<h:inputSecret id="user-senha" value="#{cadastroBean.usuario.password}" class="span6"/>
+<h:inputSecret id="user-senha" value="#{cadastroBean.usuario.password}" class="span3"/>
+<h:outputLabel value="Confirmação de senha" for="user-senha-conf"/>
+<h:inputSecret id="user-senha-conf" value="#{cadastroBean.senhaConf}" class="span3"/>
 </fieldset>
 <h:commandButton class="btn btn-large btn-primary" value="Cadastrar" action="#{cadastroBean.cadastraUsuario}"/>
 </h:form>

@@ -1,4 +1,4 @@
-<ui:composition template="/WEB-INF/includes/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/WEB-INF/includes/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 <ui:define name="conteudo">
 <div class="row">
 
@@ -8,6 +8,14 @@
 <ui:repeat var="post" value="#{postBean.posts}">
 <!-- Exemplo de post -->
 <div class="post">
+<h:form>
+<h:outputText rendered="#{usuarioBean.isLogged and usuarioBean.user.admin}">
+<h:commandLink class="btn btn-success edit_post" value="Editar" action="#{editpost.editPost}">
+<f:setPropertyActionListener target="#{editpost.postId}" value="#{post.id}" />
+</h:commandLink>
+</h:outputText>
+</h:form>
+
 <h2>#{post.title}</h2>
 <div class="info">Publicado em #{post.dateFormmated} por #{post.owner.firstName} #{post.owner.lastName}</div>
 <section>
@@ -19,26 +27,26 @@
 <!-- Comentários -->
 <section class="comments">
 
-<h4>Comentários (2)</h4>
+<h4>Comentários (${fn:length(post.comentarios)})</h4>
 
+
+<ui:repeat var="comment" value="#{post.comentarios}">
 <div class="comment">
-<div class="comment-info"><span class="user-name">Alisson dos Reis Perez</span><span class="time">10/11/2012 22h30</span></div>
-<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<div class="comment-info"><span class="user-name">#{comment.owner.firstName} #{comment.owner.lastName}</span><span class="time">#{comment.dateFormmated}</span></div>
+<p>#{comment.comentario}</p>
 </div>
+</ui:repeat>
 
-<div class="comment">
-<div class="comment-info"><span class="user-name">Alisson dos Reis Perez</span><span class="time">10/11/2012 22h30</span></div>
-<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
-</div>
-
+<h:form id="comment_form">
 <div class="new-comment">
-<form action="#">
-<textarea rows="3"></textarea>
+<h:inputTextarea value="#{comentarioBean.comment}" row="3"/>
 <p>
-<input class="btn btn-primary" type="submit" name="send_comment" value="Enviar"/>
+<h:commandButton class="btn btn-success" value="Enviar" action="#{comentarioBean.fazComentario}">
+<f:setPropertyActionListener target="#{comentarioBean.postId}" value="#{post.id}" />
+</h:commandButton>
 </p>
-</form>
 </div>
+</h:form>
 
 </section>
 <!-- /Comentários -->
