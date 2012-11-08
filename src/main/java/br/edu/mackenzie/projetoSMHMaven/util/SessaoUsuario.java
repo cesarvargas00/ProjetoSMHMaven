@@ -2,6 +2,8 @@ package br.edu.mackenzie.projetoSMHMaven.util;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
@@ -20,15 +22,14 @@ public class SessaoUsuario {
 	public static SessaoUsuario sessaoUsuarioInstance ;
 	
 	HttpSession httpSession ;
-	
-	private SessaoUsuario() {
-		FacesContext fc = FacesContext.getCurrentInstance();
-		ExternalContext ec = fc.getExternalContext();
-		this.httpSession = (HttpSession) ec.getSession( false ) ;
+		
+	private SessaoUsuario( HttpSession session ) {
+		this.httpSession = session ;
 	}
 	
 	public boolean isLogged() {
 		Boolean logado = (Boolean) this.httpSession.getAttribute( USER_LOGGED_CONTROL ) ;
+		System.out.println( "Teste::: " + logado ) ;
 		return logado != null && logado ;
 	}
 	
@@ -54,7 +55,22 @@ public class SessaoUsuario {
 	
 	public static SessaoUsuario getInstance() {
 		if ( sessaoUsuarioInstance == null ) {
-			sessaoUsuarioInstance = new SessaoUsuario() ;
+			FacesContext fc = FacesContext.getCurrentInstance();
+			ExternalContext ec = fc.getExternalContext();
+			HttpSession httpSession = (HttpSession) ec.getSession( false ) ;
+			
+			sessaoUsuarioInstance = new SessaoUsuario( httpSession ) ;
+		}
+		
+		return sessaoUsuarioInstance ;
+	}
+	
+	public static SessaoUsuario getInstance( ServletRequest request ) {
+		if ( sessaoUsuarioInstance == null ) {
+			HttpServletRequest req = (HttpServletRequest) request;
+			HttpSession session = req.getSession();
+			
+			sessaoUsuarioInstance = new SessaoUsuario( session ) ;
 		}
 		
 		return sessaoUsuarioInstance ;

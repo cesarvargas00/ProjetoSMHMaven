@@ -17,7 +17,7 @@ import javax.servlet.annotation.WebFilter;
  * Filtro de conexão do Hibernate. Elimina a necessidade de criar um entity
  * manager todas as vezes.
  */
-@WebFilter(servletNames = { "Faces Servlet" })
+@WebFilter( servletNames = { "Faces Servlet" } )
 public class HibernateFilter implements Filter {
 	private EntityManagerFactory factory;
 
