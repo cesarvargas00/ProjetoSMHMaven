@@ -9,6 +9,10 @@ import br.edu.mackenzie.projetoSMHMaven.model.Post;
 
 public class PostRepositorio extends Repositorio {
 	
+	public PostRepositorio(boolean b) {
+		super(b) ;
+	}
+
 	public void persistir( Post post ) {
 		
 		this.getManager().persist( post ) ;
