@@ -7,9 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpUtils;
-
-import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.util.List;
 import java.util.Iterator ;
@@ -17,8 +14,10 @@ import java.util.Iterator ;
 import br.edu.mackenzie.projetoSMHMaven.json.JSONArray;
 import br.edu.mackenzie.projetoSMHMaven.json.JSONException;
 import br.edu.mackenzie.projetoSMHMaven.json.JSONObject;
+import br.edu.mackenzie.projetoSMHMaven.model.Comentario;
 import br.edu.mackenzie.projetoSMHMaven.model.Post;
 import br.edu.mackenzie.projetoSMHMaven.repositorios.PostRepositorio;
+import br.edu.mackenzie.projetoSMHMaven.util.Util;
 
 /**
  * Servlet implementation class BlogIndex
@@ -48,17 +47,28 @@ public class BlogIndex extends HttpServlet {
 		Iterator<Post> postsIt = posts.iterator() ;
 		
 		JSONObject jsObject = new JSONObject() ;
+		JSONArray jsComments ;
+		JSONObject jsonObj ;
+		
 		try {
 			jsObject.put( "num_results" , posts.size() ) ;
 			JSONArray postsJsonArray = new JSONArray() ;
-			JSONObject jsonObj ;
+
 			Post post ;
 			
 			while ( postsIt.hasNext() ) {
 				post = postsIt.next() ;
+				
 				jsonObj = new JSONObject() ;
 				jsonObj.put( "title" , post.getTitle() ) ;
 				jsonObj.put( "content" , post.getContent() ) ;
+				jsonObj.put( "author" , post.getOwner().getFullName() ) ;
+				
+				// Cadastrando os Comentários
+				jsComments = this.getComments(post) ;
+				jsonObj.put( "comments" , jsComments ) ;
+				jsonObj.put( "num_of_comments" , jsComments.length() ) ;
+				
 				postsJsonArray.put( jsonObj ) ;
 			}
 			
@@ -69,6 +79,24 @@ public class BlogIndex extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private JSONArray getComments( Post post ) throws JSONException {
+		JSONArray jsComments = new JSONArray() ;
+		JSONObject jsCommentObj ;
+		Iterator<Comentario> commentsIt = post.getComentarios().iterator() ;
+		Comentario comment ;
+		
+		while ( commentsIt.hasNext() ) {
+			comment = commentsIt.next() ;
+			jsCommentObj = new JSONObject() ;
+			jsCommentObj.put( "comment" , comment.getComentario() ) ;
+			jsCommentObj.put( "author" , comment.getOwner().getFullName() ) ;
+			jsCommentObj.put( "time" , Util.formmatCallendar( comment.getDateOfCreation() ) ) ;
+			jsComments.put( jsCommentObj ) ;
+		}
+		
+		return jsComments ;
 	}
 
 	/**

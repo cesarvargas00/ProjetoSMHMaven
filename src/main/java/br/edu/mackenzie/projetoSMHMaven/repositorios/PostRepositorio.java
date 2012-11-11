@@ -9,6 +9,10 @@ import br.edu.mackenzie.projetoSMHMaven.model.Post;
 
 public class PostRepositorio extends Repositorio {
 	
+	public PostRepositorio() {
+		super() ;
+	}
+	
 	public PostRepositorio(boolean b) {
 		super(b) ;
 	}
