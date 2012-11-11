@@ -11,8 +11,17 @@ import br.edu.mackenzie.projetoSMHMaven.model.Usuario;
 
 public class UsuarioRepositorio extends Repositorio {
 	
+	public UsuarioRepositorio() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UsuarioRepositorio(Boolean useFactory) {
+		super(useFactory);
+		// TODO Auto-generated constructor stub
+	}
+
 	public void persistir( Usuario usuario ) {
-		
 		this.getManager().persist( usuario ) ;
 	}
 	

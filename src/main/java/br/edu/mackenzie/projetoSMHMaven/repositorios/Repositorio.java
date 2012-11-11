@@ -21,6 +21,14 @@ public abstract class Repositorio {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory( HibernateFilter.PERSISTENCE_UNIT_NAME ) ;
 		this.manager = factory.createEntityManager() ;
 	}
+	
+	public void begin() {
+		this.manager.getTransaction().begin() ;
+	}
+	
+	public void commit() {
+		this.manager.getTransaction().commit() ;
+	}
 
 	/**
 	 * @return the manager

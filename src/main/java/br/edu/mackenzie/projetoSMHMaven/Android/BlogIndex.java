@@ -14,8 +14,10 @@ import java.util.Iterator ;
 import br.edu.mackenzie.projetoSMHMaven.json.JSONArray;
 import br.edu.mackenzie.projetoSMHMaven.json.JSONException;
 import br.edu.mackenzie.projetoSMHMaven.json.JSONObject;
+import br.edu.mackenzie.projetoSMHMaven.model.AndroidSession;
 import br.edu.mackenzie.projetoSMHMaven.model.Comentario;
 import br.edu.mackenzie.projetoSMHMaven.model.Post;
+import br.edu.mackenzie.projetoSMHMaven.repositorios.AndroidSessionRepositorio;
 import br.edu.mackenzie.projetoSMHMaven.repositorios.PostRepositorio;
 import br.edu.mackenzie.projetoSMHMaven.util.Util;
 
@@ -41,7 +43,7 @@ public class BlogIndex extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		response.setContentType( "application/json; charset=UTF-8" ) ;
-		
+				
 		PostRepositorio repo = new PostRepositorio( true ) ;
 		List<Post> posts = repo.getAllPosts() ;
 		Iterator<Post> postsIt = posts.iterator() ;
