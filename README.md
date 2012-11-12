@@ -3,11 +3,23 @@ Projeto de Sistemas Multimidia e Hipermídia.
 ####Alunos:
 + Alan Vangelis 
 + Alisson Perez 
-+ Cesar Vargas 
++ Cesar Vargas
 + Felipe Kitagawa 
 
 Projeto Java web com Maven + JPA + JSF criado para a disciplina de SMH - Sistemas Multimídia e Hipermídia.
-Qualquer dúvida, o Cesar é fodão...
+
+Instruções:
+
+1 - Criar um banco de dados com o nome de bancoSMH;
+2 - Rodar a aplicação no Tomcat 7.0;
+3 - Pronto!
+
+Agora, o blog vem com um login e senha padrão.
+
+login: root
+senha: toor
+
+Qualquer dúvida, postar no gitHub: https://github.com/cesarvargas00/ProjetoSMHMaven
 
 -
 _Copyright (c) 2012 Cesar Vargas, Felipe Kitagawa, Alisson Perez, Alan Vangelis_
