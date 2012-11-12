@@ -62,6 +62,7 @@ public class BlogIndex extends HttpServlet {
 				post = postsIt.next() ;
 				
 				jsonObj = new JSONObject() ;
+				jsonObj.put( "post_id" , post.getId() ) ;
 				jsonObj.put( "title" , post.getTitle() ) ;
 				jsonObj.put( "content" , post.getContent() ) ;
 				jsonObj.put( "author" , post.getOwner().getFullName() ) ;

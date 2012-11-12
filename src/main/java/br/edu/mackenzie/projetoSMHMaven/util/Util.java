@@ -41,5 +41,27 @@ public class Util {
 
 		return datetime ;
    }
+   
+   public static String formatToMysql( Calendar cal ) {
+		if ( cal == null ) {
+			return "" ;
+		}
+
+		String datetime = "" ;
+
+		datetime += cal.get(Calendar.YEAR) ;
+		datetime += "-" ;
+		datetime += ( cal.get(Calendar.MONTH) + 1 ) ;
+		datetime += "-" ;
+		datetime += cal.get(Calendar.DAY_OF_MONTH) ;
+		datetime += " " ;
+		datetime += cal.get(Calendar.AM) ;
+		datetime += ":" ;
+		datetime += cal.get(Calendar.MINUTE) ;
+		datetime += ":" ;
+		datetime += cal.get(Calendar.SECOND) ;
+
+		return datetime ;
+   }
 
 }

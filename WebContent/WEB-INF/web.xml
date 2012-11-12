@@ -82,12 +82,20 @@
     <servlet-name>AndroidServletIndex</servlet-name>
     <url-pattern>/android/index</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>AndroidServletLogin</servlet-name>
     <servlet-class>br.edu.mackenzie.projetoSMHMaven.Android.Login</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AndroidServletLogin</servlet-name>
     <url-pattern>/android/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AndroidServletComment</servlet-name>
+    <servlet-class>br.edu.mackenzie.projetoSMHMaven.Android.ComentarioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AndroidServletComment</servlet-name>
+    <url-pattern>/android/comment</url-pattern>
   </servlet-mapping>
 </web-app>

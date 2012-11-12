@@ -65,6 +65,7 @@ public class Login extends HttpServlet {
 			
 			jsonResponse.put( "status" , "logged" ) ;
 			jsonResponse.put( "message" , "Bem-vindo " + usuario.getFullName() ) ;
+			jsonResponse.put( "user_name" , usuario.getFullName() ) ;
 			jsonResponse.put( "auth_key" , androidSession.getAuthKey() ) ;
 			
 		} catch (UserNotFoundException e) {
